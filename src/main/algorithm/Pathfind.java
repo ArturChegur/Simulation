@@ -1,4 +1,4 @@
-package main.game;
+package main.algorithm;
 
 public class Pathfind {
 
