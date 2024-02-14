@@ -4,8 +4,9 @@ import main.model.Coordinates;
 import main.model.Entity;
 
 public class Rock extends Entity {
-    public Rock(Coordinates coordinates) {
-        super(coordinates, "f");
-    }
+    private static final String imageOfRock = "\uD83C\uDFD4";
 
+    public Rock(Coordinates coordinates) {
+        super(coordinates, imageOfRock);
+    }
 }

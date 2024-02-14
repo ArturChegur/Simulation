@@ -3,7 +3,6 @@ package main.model;
 
 import java.util.Objects;
 
-// класс координат, в каждом классе существа будет такой для понимания нахождения его на поле
 public class Coordinates {
     private final Integer CoordinateByX;
     private final Integer CoordinateByY;

@@ -1,6 +1,8 @@
 package main.model;
 
 public class BoardConsoleRenderer {
+
+    //todo for static method + do not call board.getheight() many times
     public void render(Board board) {
         Integer height = board.getHeight();
         Integer width = board.getWidth();

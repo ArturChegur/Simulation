@@ -16,8 +16,4 @@ public class Herbivore extends Creature {
     public void makeMove() {
 
     }
-
-    public String getImage() {
-        return imageOfSheep;
-    }
 }
