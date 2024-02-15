@@ -4,20 +4,12 @@ package main.model;
 import java.util.Objects;
 
 public class Coordinates {
-    private final Integer CoordinateByX;
-    private final Integer CoordinateByY;
+    private final Integer widthCoordinate;
+    private final Integer heightCoordinate;
 
-    public Coordinates(Integer CoordinateByX, Integer CoordinateByY) {
-        this.CoordinateByX = CoordinateByX;
-        this.CoordinateByY = CoordinateByY;
-    }
-
-    public Integer getCoordinateByX() {
-        return CoordinateByX;
-    }
-
-    public Integer getCoordinateByY() {
-        return CoordinateByY;
+    public Coordinates(Integer widthCoordinate, Integer heightCoordinate) {
+        this.widthCoordinate = widthCoordinate;
+        this.heightCoordinate = heightCoordinate;
     }
 
     @Override
@@ -25,11 +17,11 @@ public class Coordinates {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Coordinates that = (Coordinates) o;
-        return Objects.equals(CoordinateByX, that.CoordinateByX) && Objects.equals(CoordinateByY, that.CoordinateByY);
+        return Objects.equals(widthCoordinate, that.widthCoordinate) && Objects.equals(heightCoordinate, that.heightCoordinate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(CoordinateByX, CoordinateByY);
+        return Objects.hash(widthCoordinate, heightCoordinate);
     }
 }
