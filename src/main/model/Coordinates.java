@@ -12,6 +12,14 @@ public class Coordinates {
         this.heightCoordinate = heightCoordinate;
     }
 
+    public Integer getWidthCoordinate() {
+        return widthCoordinate;
+    }
+
+    public Integer getHeightCoordinate() {
+        return heightCoordinate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,10 +1,11 @@
 package main.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Board {
-    private static final Integer HEIGHT = 20;
-    private static final Integer WIDTH = 20;
+    private static final Integer HEIGHT = 10;
+    private static final Integer WIDTH = 10;
     private final HashMap<Coordinates, Entity> map = new HashMap<>();
 
     public void addEntityOnMap(Coordinates coordinates, Entity entity) {
@@ -29,5 +30,9 @@ public class Board {
 
     public void removeEntity(Coordinates coordinates) {
         map.remove(coordinates);
+    }
+
+    public Map<Coordinates, Entity> getMap() {
+        return map;
     }
 }
