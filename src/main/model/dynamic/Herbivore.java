@@ -2,12 +2,10 @@ package main.model.dynamic;
 
 import main.model.*;
 
-import java.util.HashMap;
 
 public class Herbivore extends Creature {
 
     private static final String imageOfSheep = "\uD83D\uDC11";
-    protected Integer health = 100;
 
     public Herbivore(Coordinates coordinates) {
         super(coordinates, imageOfSheep);
@@ -15,16 +13,21 @@ public class Herbivore extends Creature {
 
     @Override
     public void makeMove(Board board) {
-         Coordinates newCoordinates = Actions.findPath(coordinates, "Grass");
-         if (newCoordinates != null) {
-             board.removeEntity(coordinates);
-             board.addEntityOnMap(newCoordinates, this);
-             coordinates = newCoordinates;
-         }
+        pathToTarget = Actions.findPath(coordinates, "Grass");
+        if (pathToTarget != null) {
+            board.removeEntity(coordinates);
+            Coordinates newCoordinates = pathToTarget.pop();
+            board.addEntityOnMap(newCoordinates, this);
+            coordinates = newCoordinates;
+            Simulation.pauseSimulation(false);
+        }
     }
 
     public void reduceHealth(Integer damage) {
         health -= damage;
     }
 
+    public Integer getHealth() {
+        return health;
+    }
 }

@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57ed09b8-ecf4-4a87-b39c-d343b62c3502" name="Changes" comment="added working findpath algorithm">
+    <list default="true" id="57ed09b8-ecf4-4a87-b39c-d343b62c3502" name="Changes" comment="added another logic of finding">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/model/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Actions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Coordinates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/model/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/model/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/model/dynamic/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/dynamic/Herbivore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/model/dynamic/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/dynamic/Predator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/motionless/Grass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/motionless/Rock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/motionless/Tree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708118516397</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added another logic of finding">
+      <option name="closed" value="true" />
+      <created>1708165589086</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708165589086</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,7 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added working findpath algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="added working findpath algorithm" />
+    <MESSAGE value="added another logic of finding" />
+    <option name="LAST_COMMIT_MESSAGE" value="added another logic of finding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

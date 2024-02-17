@@ -6,27 +6,24 @@ import main.model.motionless.Grass;
 import main.model.motionless.Rock;
 import main.model.motionless.Tree;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
-public class Actions {
-    private final Integer amountOfRocks = 20;//30;
-    private final Integer amountOfGrass = 220;//15;
-    private final Integer amountOfTrees = 30;//20;
-    private final Integer amountOfHerbivores = 10;//5;
-    private final Integer amountOfPredators = 0;//2;
+
+public final class Actions {
+    private static final Integer amountOfRocks = 50;
+    private static final Integer amountOfGrass = 100;
+    private static final Integer amountOfTrees = 30;
+    private static final Integer amountOfHerbivores = 15;
+    private static final Integer amountOfPredators = 3;
+    private static final int[][] directionsForPredator = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+    private static final int[][] directionsForHerbivore = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     private static Board board;
 
-    private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}}; // remake order
-
-
-    public Actions(Board board) {
+    public static void setBoard(Board board) {
         Actions.board = board;
     }
 
-    public void placeEntities() {
+    public static void placeEntities() {
         Integer mapHeight = board.getHeight();
         Integer mapWidth = board.getWidth();
         for (int i = 0; i < amountOfRocks; i++) {
@@ -63,7 +60,6 @@ public class Actions {
                 if (flag) {
                     board.addEntityOnMap(coordinates, new Herbivore(coordinates));
                 }
-
             } while (!flag);
         }
         for (int i = 0; i < amountOfPredators; i++) {
@@ -76,12 +72,11 @@ public class Actions {
                 if (flag) {
                     board.addEntityOnMap(coordinates, new Predator(coordinates));
                 }
-
             } while (!flag);
         }
     }
 
-    public static Coordinates findPath(Coordinates coordinates, String target) {
+    public static Stack<Coordinates> findPath(Coordinates coordinates, String target) {
         Queue<Coordinates> queueOfCoordinates = new LinkedList<>();
         HashMap<Coordinates, Coordinates> previousCoordinates = new HashMap<>();
         queueOfCoordinates.add(coordinates);
@@ -91,23 +86,37 @@ public class Actions {
             Coordinates current = queueOfCoordinates.poll();
             Entity entity = board.getEntity(current);
             if (entity != null && entity.getClass().getSimpleName().equals(target)) {
-                LinkedList<Coordinates> path = new LinkedList<>();
+                Stack<Coordinates> path = new Stack<>();
                 while (current != null) {
-                    path.addFirst(current);
+                    path.add(current);
                     current = previousCoordinates.get(current);
                 }
-                return path.get(1);
+                path.pop();
+                return path;
             }
             int currentHeight = current.getHeightCoordinate();
             int currentWidth = current.getWidthCoordinate();
-            for (int[] dir : directions) {
-                int newWidth = currentWidth + dir[0];
-                int newHeight = currentHeight + dir[1];
-                Coordinates neighbor = new Coordinates(newWidth, newHeight);
-                if (isValid(neighbor, target) && !visited.contains(neighbor)) {
-                    queueOfCoordinates.add(neighbor);
-                    visited.add(neighbor);
-                    previousCoordinates.put(neighbor, current);
+            if (target.equals("Herbivore")) {
+                for (int[] dir : directionsForPredator) {
+                    int newWidth = currentWidth + dir[0];
+                    int newHeight = currentHeight + dir[1];
+                    Coordinates neighbor = new Coordinates(newWidth, newHeight);
+                    if (isValid(neighbor, target) && !visited.contains(neighbor)) {
+                        queueOfCoordinates.add(neighbor);
+                        visited.add(neighbor);
+                        previousCoordinates.put(neighbor, current);
+                    }
+                }
+            } else {
+                for (int[] dir : directionsForHerbivore) {
+                    int newWidth = currentWidth + dir[0];
+                    int newHeight = currentHeight + dir[1];
+                    Coordinates neighbor = new Coordinates(newWidth, newHeight);
+                    if (isValid(neighbor, target) && !visited.contains(neighbor)) {
+                        queueOfCoordinates.add(neighbor);
+                        visited.add(neighbor);
+                        previousCoordinates.put(neighbor, current);
+                    }
                 }
             }
         }
@@ -118,13 +127,24 @@ public class Actions {
         int height = coordinates.getHeightCoordinate();
         int width = coordinates.getWidthCoordinate();
         Entity entity = board.getEntity(coordinates);
-        if (entity instanceof Rock || entity instanceof Tree) {
+        if (entity instanceof Rock || entity instanceof Tree || entity instanceof Predator) {
             return false;
-        } else if (target.equals("Grass") && (entity instanceof Predator || entity instanceof Herbivore)) {
+        } else if (target.equals("Grass") && entity instanceof Herbivore) {
             return false;
-        } else if (target.equals("Herbivore") && entity instanceof Predator) {
+        } else if (target.equals("Herbivore") && entity instanceof Grass) {
             return false;
         }
         return (board.getWidth() > width && width >= 0) && (board.getHeight() > height && height >= 0);
+    }
+
+    public static void spawnGrass(Integer amountOfGrass) {
+        for (int i = 0; i < amountOfGrass; i++) {
+            int height = (int) (Math.random() * board.getHeight());
+            int width = (int) (Math.random() * board.getWidth());
+            Coordinates coordinates = new Coordinates(width, height);
+            if (board.isCoordinateEmpty(coordinates)) {
+                board.addEntityOnMap(coordinates, new Grass(coordinates));
+            }
+        }
     }
 }

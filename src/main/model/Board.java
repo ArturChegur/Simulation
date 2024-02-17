@@ -2,6 +2,7 @@ package main.model;
 
 import java.util.HashMap;
 
+
 public class Board {
     private static final Integer HEIGHT = 20;
     private static final Integer WIDTH = 20;
