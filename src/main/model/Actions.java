@@ -12,22 +12,18 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Actions {
-    private final Integer amountOfRocks = 0;//30;
-    private final Integer amountOfGrass = 55;//15;
-    private final Integer amountOfTrees = 0;//20;
-    private final Integer amountOfHerbivores = 6;//5;
+    private final Integer amountOfRocks = 20;//30;
+    private final Integer amountOfGrass = 220;//15;
+    private final Integer amountOfTrees = 30;//20;
+    private final Integer amountOfHerbivores = 10;//5;
     private final Integer amountOfPredators = 0;//2;
-    private final BoardRender boardRender;
-    private final Integer numberOfIterations;
-    private final Board board;
+    private static Board board;
 
-    private final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}}; // remake order
+    private static final int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}}; // remake order
 
 
-    public Actions(Board board, BoardRender boardRender, Integer numberOfIterations) {
-        this.board = board;
-        this.boardRender = boardRender;
-        this.numberOfIterations = numberOfIterations;
+    public Actions(Board board) {
+        Actions.board = board;
     }
 
     public void placeEntities() {
@@ -85,7 +81,7 @@ public class Actions {
         }
     }
 
-    private Coordinates findPath(Coordinates coordinates, String target) {
+    public static Coordinates findPath(Coordinates coordinates, String target) {
         Queue<Coordinates> queueOfCoordinates = new LinkedList<>();
         HashMap<Coordinates, Coordinates> previousCoordinates = new HashMap<>();
         queueOfCoordinates.add(coordinates);
@@ -115,60 +111,20 @@ public class Actions {
                 }
             }
         }
-        return coordinates;
+        return null;
     }
 
-    private boolean isValid(Coordinates coordinates, String target) {
+    private static boolean isValid(Coordinates coordinates, String target) {
         int height = coordinates.getHeightCoordinate();
         int width = coordinates.getWidthCoordinate();
         Entity entity = board.getEntity(coordinates);
         if (entity instanceof Rock || entity instanceof Tree) {
             return false;
-        }
-        if (target.equals("Grass") && (entity instanceof Predator || entity instanceof Herbivore)) {
+        } else if (target.equals("Grass") && (entity instanceof Predator || entity instanceof Herbivore)) {
+            return false;
+        } else if (target.equals("Herbivore") && entity instanceof Predator) {
             return false;
         }
-        if (target.equals("Herbivore") && entity instanceof Predator) {
-            return false;
-        }
-        return (board.getWidth() >= width && width >= 0) && (board.getHeight() >= height && height >= 0);
+        return (board.getWidth() > width && width >= 0) && (board.getHeight() > height && height >= 0);
     }
-
-    private void nextTurn(Coordinates coordinates, String type) {
-        Coordinates newCoordinates = findPath(coordinates, type);
-        board.removeEntity(coordinates);
-        if (type.equals("Grass")) {
-            board.addEntityOnMap(newCoordinates, new Herbivore(newCoordinates));
-        } else if (type.equals("Herbivore")) {
-            board.addEntityOnMap(newCoordinates, new Predator(newCoordinates));
-        }
-    }
-
-    public void startSimulation() throws InterruptedException {
-        for (int i = 0; i < 50; i++) {
-            boardRender.render(board);
-            System.out.println("new iteration");
-            Thread.sleep(400);
-            for (Coordinates c : board.getMap().keySet()) {
-                Entity entity = board.getEntity(c);
-                if (entity != null && entity.getClass().getSimpleName().equals("Herbivore")) {
-                    nextTurn(c, "Grass");
-                    break;
-                }
-            }
-            for (Coordinates c : board.getMap().keySet()) {
-                Entity entity = board.getEntity(c);
-                if (entity != null && entity.getClass().getSimpleName().equals("Predator")) {
-                    nextTurn(c, "Herbivore");
-                    break;
-                }
-            }
-        }
-    }
-
-    public void pauseSimulation() {
-        //todo pause simulation
-    }
-
-    //private
 }

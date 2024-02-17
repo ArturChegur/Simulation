@@ -7,9 +7,5 @@ public abstract class Creature extends Entity {
         super(coordinates, image);
     }
 
-    protected void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    protected abstract void makeMove();
+    protected abstract void makeMove(Board board);
 }
