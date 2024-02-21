@@ -4,18 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57ed09b8-ecf4-4a87-b39c-d343b62c3502" name="Changes" comment="added another logic of finding">
+    <list default="true" id="57ed09b8-ecf4-4a87-b39c-d343b62c3502" name="Changes" comment="final commit added all logic to simulation">
+      <change afterPath="$PROJECT_DIR$/src/main/model/actions/Actions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/model/algorithm/BFSPathFinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/model/objects/stationary/Grass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/model/objects/stationary/Rock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/model/objects/stationary/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Actions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Actions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/map/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/BoardRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/BoardRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/map/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/objects/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/objects/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/model/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/dynamic/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/dynamic/Herbivore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/dynamic/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/dynamic/Predator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/motionless/Grass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/motionless/Rock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/motionless/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/dynamic/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/objects/dynamic/Herbivore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/dynamic/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/model/objects/dynamic/Predator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Grass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Rock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/model/motionless/Tree.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708165589086</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="final commit added all logic to simulation">
+      <option name="closed" value="true" />
+      <created>1708203963089</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708203963089</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,7 +143,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added working findpath algorithm" />
     <MESSAGE value="added another logic of finding" />
-    <option name="LAST_COMMIT_MESSAGE" value="added another logic of finding" />
+    <MESSAGE value="final commit added all logic to simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="final commit added all logic to simulation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

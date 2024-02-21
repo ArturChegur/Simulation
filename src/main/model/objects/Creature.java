@@ -1,4 +1,7 @@
-package main.model;
+package main.model.objects;
+
+import main.model.map.Board;
+import main.model.map.Coordinates;
 
 import java.util.Stack;
 
@@ -11,5 +14,5 @@ public abstract class Creature extends Entity {
         super(coordinates, image);
     }
 
-    protected abstract void makeMove(Board board);
+    public abstract void makeMove(Board board);
 }

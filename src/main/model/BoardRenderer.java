@@ -1,15 +1,12 @@
 package main.model;
 
-public class BoardRender {
-    private final Integer boardHeight;
-    private final Integer boardWidth;
+import main.model.map.Board;
+import main.model.map.Coordinates;
 
-    public BoardRender(Board board) {
-        boardHeight = board.getHeight();
-        boardWidth = board.getWidth();
-    }
-
-    public void render(Board board) {
+public class BoardRenderer {
+    public static void render(Board board) {
+        int boardHeight = board.getHeight();
+        int boardWidth = board.getWidth();
         for (int height = 0; height < boardHeight; height++) {
             StringBuilder line = new StringBuilder();
             for (int width = 0; width < boardWidth; width++) {

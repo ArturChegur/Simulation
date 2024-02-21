@@ -1,6 +1,12 @@
-package main.model;
+package main.model.map;
 
+import main.model.objects.Creature;
+import main.model.objects.Entity;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class Board {
@@ -32,7 +38,14 @@ public class Board {
         map.remove(coordinates);
     }
 
-    public HashMap<Coordinates, Entity> getMap() {
-        return map;
+    public List<Creature> getMap() {
+        List<Creature> entities = new ArrayList<>();
+        for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
+            Entity entity = entry.getValue();
+            if (entity instanceof Creature) {
+                entities.add((Creature) entity);
+            }
+        }
+        return entities;
     }
 }

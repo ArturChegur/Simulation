@@ -1,28 +1,23 @@
 package main.model;
 
-import java.util.ArrayList;
+import main.model.actions.Actions;
+import main.model.map.Board;
+import main.model.objects.Creature;
+
 import java.util.List;
-import java.util.Map;
 
 
 public class Simulation {
-    private static final BoardRender boardRender;
     private static Integer numberOfIterations = 0;
-    private static final Board board;
+    private static final Board BOARD = new Board();
     private static boolean continueSimulation = true;
-
-    static {
-        board = new Board();
-        boardRender = new BoardRender(board);
-        Actions.setBoard(board);
-    }
 
     public static void main(String[] args) throws InterruptedException {
         startSimulation();
     }
 
     private static void startSimulation() throws InterruptedException {
-        Actions.placeEntities();
+        Actions.placeDefaultEntities(BOARD);
         while (continueSimulation) {
             nextTurn();
         }
@@ -33,24 +28,18 @@ public class Simulation {
     }
 
     private static void nextTurn() throws InterruptedException {
-        boardRender.render(board);
-        List<Entity> entitiesOnBoard = new ArrayList<>();
-        for (Map.Entry<Coordinates, Entity> entry : board.getMap().entrySet()) {
-            Entity entity = entry.getValue();
-            if (entity instanceof Creature) {
-                entitiesOnBoard.add(entity);
-            }
-        }
         continueSimulation = false;
-        for (Entity entity : entitiesOnBoard) {
-            if (board.getEntity(entity.coordinates).equals(entity)) {
-                ((Creature) entity).makeMove(board);
+        BoardRenderer.render(BOARD);
+        List<Creature> entitiesOnBoard = BOARD.getMap();
+        for (Creature creature : entitiesOnBoard) {
+            if (BOARD.getEntity(creature.getCoordinates()).equals(creature)) {
+                creature.makeMove(BOARD);
             }
         }
         if (numberOfIterations % 3 == 0) {
-            Actions.spawnGrass(5);
+            Actions.spawnGrass(5, BOARD);
         }
-        Thread.sleep(300);
+        Thread.sleep(900);
         System.out.println("Iteration number: " + numberOfIterations);
         numberOfIterations += 1;
     }

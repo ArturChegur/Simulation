@@ -1,4 +1,6 @@
-package main.model;
+package main.model.objects;
+
+import main.model.map.Coordinates;
 
 public abstract class Entity {
     protected Coordinates coordinates;
