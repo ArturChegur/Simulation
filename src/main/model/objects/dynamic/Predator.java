@@ -17,7 +17,7 @@ public class Predator extends Creature {
 
     @Override
     public void makeMove(Board board) {
-        pathToTarget = BFSPathFinder.getPath(coordinates, Herbivore.class, board);
+        pathToTarget = BFSPathFinder.getPath(coordinates, Herbivore.class, Predator.class, board);
         if (pathToTarget != null) {
             Coordinates newCoordinates = pathToTarget.pop();
             Herbivore herbivore = (Herbivore) board.getEntity(newCoordinates);

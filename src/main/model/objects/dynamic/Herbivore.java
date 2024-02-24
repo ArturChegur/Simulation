@@ -18,7 +18,7 @@ public class Herbivore extends Creature {
 
     @Override
     public void makeMove(Board board) {
-        pathToTarget = BFSPathFinder.getPath(coordinates, Grass.class, board);
+        pathToTarget = BFSPathFinder.getPath(coordinates, Grass.class, Herbivore.class, board);
         if (pathToTarget != null) {
             board.removeEntity(coordinates);
             Coordinates newCoordinates = pathToTarget.pop();

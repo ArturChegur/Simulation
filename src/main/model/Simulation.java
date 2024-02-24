@@ -30,16 +30,16 @@ public class Simulation {
     private static void nextTurn() throws InterruptedException {
         continueSimulation = false;
         BoardRenderer.render(BOARD);
-        List<Creature> entitiesOnBoard = BOARD.getMap();
+        List<Creature> entitiesOnBoard = BOARD.getAllEntitiesOnMap();
         for (Creature creature : entitiesOnBoard) {
             if (BOARD.getEntity(creature.getCoordinates()).equals(creature)) {
                 creature.makeMove(BOARD);
             }
         }
         if (numberOfIterations % 3 == 0) {
-            Actions.spawnGrass(5, BOARD);
+            Actions.spawnGrass(10, BOARD);
         }
-        Thread.sleep(900);
+        Thread.sleep(700);
         System.out.println("Iteration number: " + numberOfIterations);
         numberOfIterations += 1;
     }

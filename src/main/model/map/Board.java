@@ -38,7 +38,7 @@ public class Board {
         map.remove(coordinates);
     }
 
-    public List<Creature> getMap() {
+    public List<Creature> getAllEntitiesOnMap() {
         List<Creature> entities = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
             Entity entity = entry.getValue();

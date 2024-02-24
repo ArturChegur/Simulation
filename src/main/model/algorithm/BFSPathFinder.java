@@ -4,10 +4,6 @@ import main.model.map.Board;
 import main.model.map.Coordinates;
 import main.model.objects.Entity;
 import main.model.objects.dynamic.Herbivore;
-import main.model.objects.dynamic.Predator;
-import main.model.objects.stationary.Grass;
-import main.model.objects.stationary.Rock;
-import main.model.objects.stationary.Tree;
 
 import java.util.*;
 
@@ -15,7 +11,7 @@ import java.util.*;
 public class BFSPathFinder {
     private static final int[][] DIRECTIONS_FOR_SHIFT = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
-    public static Stack<Coordinates> getPath(Coordinates coordinates, Class<?> target, Board board) {
+    public static Stack<Coordinates> getPath(Coordinates coordinates, Class<? extends Entity> target, Class<? extends Entity> searcher, Board board) {
         Queue<Coordinates> queueOfCoordinates = new LinkedList<>();
         HashMap<Coordinates, Coordinates> previousCoordinates = new HashMap<>();
         queueOfCoordinates.add(coordinates);
@@ -47,18 +43,12 @@ public class BFSPathFinder {
         return null;
     }
 
-    private static boolean isCoordinateValidForCreature(Coordinates coordinates, Class<?> target, Board board) {
+    private static boolean isCoordinateValidForCreature(Coordinates coordinates, Class<? extends Entity> target, Board board) {
         int height = coordinates.getHeightCoordinate();
         int width = coordinates.getWidthCoordinate();
         Entity entity = board.getEntity(coordinates);
         if (entity != null) {
-            if (entity instanceof Rock || entity instanceof Tree || entity instanceof Predator) {
-                return false;
-            } else if (Grass.class.equals(target) && entity instanceof Herbivore) {
-                return false;
-            } else if (Herbivore.class.equals(target) && entity instanceof Grass) {
-                return false;
-            }
+            return target.equals(entity.getClass());
         }
         return (board.getWidth() > width && width >= 0) && (board.getHeight() > height && height >= 0);
     }

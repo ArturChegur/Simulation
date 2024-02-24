@@ -15,7 +15,7 @@ public class Actions {
         spawnGrass(80, board);
         spawnRocks(40, board);
         spawnTrees(40, board);
-        spawnHerbivores(8, board);
+        spawnHerbivores(14, board);
         spawnPredators(2, board);
     }
 
