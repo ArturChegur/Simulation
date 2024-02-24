@@ -1,15 +1,14 @@
-package main.model.objects.dynamic;
+package main.objects.dynamic;
 
-import main.model.*;
-import main.model.algorithm.BFSPathFinder;
-import main.model.map.Board;
-import main.model.map.Coordinates;
-import main.model.objects.Creature;
-import main.model.objects.stationary.Grass;
+import main.map.Board;
+import main.Simulation;
+import main.algorithm.BFSPathFinder;
+import main.map.Coordinates;
+import main.objects.Creature;
+import main.objects.stationary.Grass;
 
 
 public class Herbivore extends Creature {
-
     private static final String IMAGE_OF_SHEEP = "\uD83D\uDC11";
 
     public Herbivore(Coordinates coordinates) {

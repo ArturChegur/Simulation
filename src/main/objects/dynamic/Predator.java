@@ -1,10 +1,10 @@
-package main.model.objects.dynamic;
+package main.objects.dynamic;
 
-import main.model.Simulation;
-import main.model.algorithm.BFSPathFinder;
-import main.model.map.Board;
-import main.model.map.Coordinates;
-import main.model.objects.Creature;
+import main.map.Board;
+import main.Simulation;
+import main.algorithm.BFSPathFinder;
+import main.map.Coordinates;
+import main.objects.Creature;
 
 
 public class Predator extends Creature {

@@ -1,8 +1,9 @@
-package main.model;
+package main;
 
-import main.model.actions.Actions;
-import main.model.map.Board;
-import main.model.objects.Creature;
+import main.map.Board;
+import main.actions.Actions;
+import main.objects.Creature;
+import main.objects.EntityType;
 
 import java.util.List;
 
@@ -37,9 +38,9 @@ public class Simulation {
             }
         }
         if (numberOfIterations % 3 == 0) {
-            Actions.spawnGrass(10, BOARD);
+            Actions.spawnAction(10, EntityType.GRASS, BOARD);
         }
-        Thread.sleep(700);
+        Thread.sleep(900);
         System.out.println("Iteration number: " + numberOfIterations);
         numberOfIterations += 1;
     }

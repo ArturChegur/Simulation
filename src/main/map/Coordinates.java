@@ -1,4 +1,4 @@
-package main.model.map;
+package main.map;
 
 import java.util.Objects;
 

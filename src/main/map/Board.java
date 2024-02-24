@@ -1,7 +1,7 @@
-package main.model.map;
+package main.map;
 
-import main.model.objects.Creature;
-import main.model.objects.Entity;
+import main.objects.Creature;
+import main.objects.Entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;

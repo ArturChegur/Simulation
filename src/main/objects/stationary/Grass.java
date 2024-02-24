@@ -1,7 +1,7 @@
-package main.model.objects.stationary;
+package main.objects.stationary;
 
-import main.model.map.Coordinates;
-import main.model.objects.Entity;
+import main.map.Coordinates;
+import main.objects.Entity;
 
 
 public class Grass extends Entity {

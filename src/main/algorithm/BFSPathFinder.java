@@ -1,9 +1,9 @@
-package main.model.algorithm;
+package main.algorithm;
 
-import main.model.map.Board;
-import main.model.map.Coordinates;
-import main.model.objects.Entity;
-import main.model.objects.dynamic.Herbivore;
+import main.map.Board;
+import main.map.Coordinates;
+import main.objects.Entity;
+import main.objects.dynamic.Herbivore;
 
 import java.util.*;
 

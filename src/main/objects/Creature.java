@@ -1,7 +1,7 @@
-package main.model.objects;
+package main.objects;
 
-import main.model.map.Board;
-import main.model.map.Coordinates;
+import main.map.Board;
+import main.map.Coordinates;
 
 import java.util.Stack;
 
