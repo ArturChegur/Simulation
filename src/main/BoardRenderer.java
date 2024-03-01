@@ -9,7 +9,6 @@ public class BoardRenderer {
         int boardWidth = board.getWidth();
         StringBuilder line = new StringBuilder();
         for (int height = 0; height < boardHeight; height++) {
-            //StringBuilder line = new StringBuilder();
             for (int width = 0; width < boardWidth; width++) {
                 Coordinates currentCoordinate = new Coordinates(width, height);
                 if (board.isCoordinateEmpty(currentCoordinate)) {
@@ -19,7 +18,6 @@ public class BoardRenderer {
                 }
             }
             line.append("\n");
-            //System.out.println(line);
         }
         System.out.println(line);
     }
